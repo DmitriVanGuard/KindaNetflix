@@ -1,6 +1,6 @@
 {
-	"extends": ["airbnb", "prettier", "prettier/react"],
-	"plugins": ["prettier"],
+	"extends": ["plugin:flowtype/recommended", "airbnb", "prettier", "prettier/react"],
+	"plugins": ["flowtype", "prettier"],
 	"parser": "babel-eslint", // Will use parser from babel, so eslint will understand everything that babel can
 	"parserOptions": {
 		"ecmaVersion": 2016,
