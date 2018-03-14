@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "build:dev": "webpack --mode development"
+    "dev": "webpack-dev-server --mode development"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

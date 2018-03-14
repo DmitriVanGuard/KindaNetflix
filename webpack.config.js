@@ -9,7 +9,8 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	devServer: {
-		publicPath: '/public/'
+		publicPath: '/public/',
+		historyApiFallback: true // When server does not recognize route -> (not good in production) client side will worry about the routing
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.json']
