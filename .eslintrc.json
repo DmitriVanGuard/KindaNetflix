@@ -1,6 +1,7 @@
 {
 	"extends": ["airbnb", "prettier", "prettier/react"],
 	"plugins": ["prettier"],
+	"parser": "babel-eslint", // Will use parser from babel, so eslint will understand everything that babel can
 	"parserOptions": {
 		"ecmaVersion": 2016,
 		"sourceType": "module",
