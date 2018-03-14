@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "build:prod": "NODE_ENV=production webpack js/ClientApp.jsx -o public/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,26 @@
   "bugs": {
     "url": "https://github.com/DmitriVanGuard/KindaNetflix/issues"
   },
-  "homepage": "https://github.com/DmitriVanGuard/KindaNetflix#readme"
+  "homepage": "https://github.com/DmitriVanGuard/KindaNetflix#readme",
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-flow": "^2.29.1",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
 }
