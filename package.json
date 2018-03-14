@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "lint": "eslint **/*.{js,jsx} --quiet",
-    "build:prod": "NODE_ENV=production webpack js/ClientApp.jsx -o public/bundle.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DmitriVanGuard/KindaNetflix.git"
@@ -18,7 +14,22 @@
     "url": "https://github.com/DmitriVanGuard/KindaNetflix/issues"
   },
   "homepage": "https://github.com/DmitriVanGuard/KindaNetflix#readme",
+  "dependencies": {
+    "global": "^4.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "scripts": {
+    "lint": "eslint **/*.{js,jsx} --quiet",
+    "watch": "webpack --mode development --watch",
+    "build:dev": "webpack --mode development"
+  },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -33,10 +44,5 @@
     "jest": "^22.4.2",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
-  },
-  "dependencies": {
-    "global": "^4.3.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
   }
 }
