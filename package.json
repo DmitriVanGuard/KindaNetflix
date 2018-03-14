@@ -14,16 +14,17 @@
     "url": "https://github.com/DmitriVanGuard/KindaNetflix/issues"
   },
   "homepage": "https://github.com/DmitriVanGuard/KindaNetflix#readme",
-  "dependencies": {
-    "global": "^4.3.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
-  },
   "scripts": {
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
     "dev": "webpack-dev-server --mode development"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
