@@ -12,9 +12,19 @@ exports[`Search renders correctly 1`] = `
       onChange={[Function]}
       placeholder="Search"
       type="text"
-      value="this is some sort of debug statement"
+      value="game"
     />
   </header>
-  <div />
+  <div>
+    <ShowCard
+      description="Nine noble families fight for control over the mythical lands of Westeros, while a forgotten race returns after being dormant for thousands of years."
+      imdbID="tt0944947"
+      key="tt0944947"
+      poster="got.jpg"
+      title="Game of Thrones"
+      trailer="giYeaKsXnsI"
+      year="2011–"
+    />
+  </div>
 </div>
 `;

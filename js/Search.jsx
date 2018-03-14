@@ -4,7 +4,7 @@ import ShowCard from './ShowCard';
 
 class Search extends Component {
 	state = {
-		searchTerm: `this is some sort of debug statement`
+		searchTerm: `game`
 	};
 
 	handleSearchTermStateChange = evt => {
