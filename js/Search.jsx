@@ -3,7 +3,13 @@ import preload from '../data.json';
 import ShowCard from './ShowCard';
 
 const Search = () => (
-	<div className="search">{preload.shows.map(show => <ShowCard show={show} />)}</div>
+	<div className="search">
+		<div>
+			{preload.shows.map(show => (
+				<ShowCard key={show.imdbID} {...show /* anti patter. Better to be explicit */} />
+			))}
+		</div>
+	</div>
 );
 
 export default Search;
