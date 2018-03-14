@@ -1,7 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const MyFirstComponent = function() {
-	return React.createElement('div', null, "It's my first React component!");
-};
-render(React.createElement(MyFirstComponent), document.getElementById('app'));
+const App = () => (
+	<div className="app">
+		<div className="landing">
+			<h1>KindaNetflix</h1>
+			<input type="text" placeholder="Search" />
+			<a href="a.html">or Browse All</a>
+		</div>
+	</div>
+);
+
+render(<App />, document.getElementById(`app`));

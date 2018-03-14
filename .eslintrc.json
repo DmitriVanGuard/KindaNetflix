@@ -8,6 +8,9 @@
 			"jsx": true
 		}
 	},
+	"rules": {
+		"quotes": [2, "backtick"]
+	},
 	"env": {
 		// Not to fail these global vars.
 		"es6": true, // Symbol, for example
