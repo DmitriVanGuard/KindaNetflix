@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders correctly 1`] = `
+<div
+  className="search"
+>
+  <header>
+    <h1>
+      KindaNetflix
+    </h1>
+    <input
+      onChange={[Function]}
+      placeholder="Search"
+      type="text"
+      value="this is some sort of debug statement"
+    />
+  </header>
+  <div />
+</div>
+`;

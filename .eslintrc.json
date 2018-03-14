@@ -16,6 +16,7 @@
 		// Not to fail these global vars.
 		"es6": true, // Symbol, for example
 		"browser": true, // window, documnet, etc
-		"node": true
+		"node": true,
+		"jest": true
 	}
 }
