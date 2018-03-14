@@ -19,6 +19,7 @@
     "watch": "webpack --mode development --watch",
     "test": "jest",
     "test:update": "jest -u",
+    "test:coverage": "jest --coverage",
     "dev": "webpack-dev-server --mode development"
   },
   "dependencies": {
@@ -57,8 +58,6 @@
     "webpack-dev-server": "^3.1.1"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

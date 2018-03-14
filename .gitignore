@@ -4,3 +4,4 @@ public/bundle.js
 _site/
 *.map
 yarn*
+coverage/
