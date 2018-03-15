@@ -1,10 +1,11 @@
 // @flow
 
 import React, { Component } from 'react';
-import preload from '../data.json';
 import ShowCard from './ShowCard';
 
-type Props = {};
+type Props = {
+	shows: Array<Show>
+};
 
 type State = {
 	searchTerm: string
@@ -32,7 +33,7 @@ class Search extends Component<Props, State> {
 					/>
 				</header>
 				<div>
-					{preload.shows
+					{this.props.shows
 						.filter(show =>
 							`${show.title} ${show.description}`
 								.toUpperCase()
