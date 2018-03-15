@@ -1,9 +1,9 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import preload from '../data.json';
-import Search from '../js/Search';
-import ShowCard from '../js/ShowCard';
+import preload from '../../data.json';
+import Search from '../Search';
+import ShowCard from '../ShowCard';
 
 configure({ adapter: new Adapter() });
 
