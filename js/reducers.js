@@ -1,11 +1,16 @@
+// @flow
+
+import { combineReducers } from 'redux';
 import { SET_SEARCH_TERM } from './actions';
 
-const DEFAULT_STATE = {
-	searchTerm: ``
-};
+const searchTermR = (state = ``, action: Action) => {
+	if (action.type === SET_SEARCH_TERM) return action.payload;
+	return state;
+}; // MUST RETURN NEW OBJECT, DONT MUTATE OLD ONE.  This reducer will return an object to rootReducer. When using combineReducers, it will handle Object.assign by itself behind the scenes, we just need to return new state based on action.payload
 
-const setSearchTermR = (state, action) => Object.assign({}, state, { searchTerm: action.payload }); // MUST RETURN NEW OBJECT, DONT MUTATE OLD ONE.  This reducer will return an object to rootReducer
+const rootReducer = combineReducers({ searchTerm: searchTermR }); // One reducer that worries about searchTerm state is searchTermR
 
+/* Our own rootReducer
 const rootReducer = (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_SEARCH_TERM:
@@ -13,6 +18,7 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
 		default:
 			return state;
 	}
-};
+}; 
+*/
 
 export default rootReducer;
