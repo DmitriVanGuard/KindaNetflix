@@ -48,7 +48,7 @@ class Details extends Component<Props, State> {
 					<iframe
 						src={`https://www.youtube-nocookie.com/embed/${trailer}?rel=0&amp;controls=0&showinfo=0`}
 						frameBorder="0"
-						allowFullScrean
+						allowFullScreen
 						title={`Trailer for ${title}`}
 					/>
 				</div>
