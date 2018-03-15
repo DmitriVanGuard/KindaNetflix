@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -23,16 +23,28 @@ const Image = styled.img`
 	margin-right: 10px;
 `;
 
-const ShowCard = (props: Show) => (
-	<Wrapper to={`/details/${props.imdbID}`} href={`/details/${props.imdbID}`}>
-		{/* Wrapper can also contain className */}
-		<Image src={`/public/img/posters/${props.poster}`} alt={`${props.title} Show Poster`} />
-		<div>
-			<h3>{props.title}</h3>
-			<h4>({props.year})</h4>
-			<p>{props.description}</p>
-		</div>
-	</Wrapper>
-);
+type Props = Show;
+
+class ShowCard extends Component<Props, any> {
+	shouldComponentUpdate() {
+		return false; // Once this component rendered for the first time -> never update it
+	}
+	render() {
+		return (
+			<Wrapper to={`/details/${this.props.imdbID}`} href={`/details/${this.props.imdbID}`}>
+				{/* Wrapper can also contain className */}
+				<Image
+					src={`/public/img/posters/${this.props.poster}`}
+					alt={`${this.props.title} Show Poster`}
+				/>
+				<div>
+					<h3>{this.props.title}</h3>
+					<h4>({this.props.year})</h4>
+					<p>{this.props.description}</p>
+				</div>
+			</Wrapper>
+		);
+	}
+}
 
 export default ShowCard;
