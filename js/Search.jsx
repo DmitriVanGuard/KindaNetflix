@@ -1,48 +1,31 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import ShowCard from './ShowCard';
 import Header from './Header';
 
 type Props = {
-	shows: Array<Show>
-};
-
-type State = {
+	shows: Array<Show>,
 	searchTerm: string
 };
 
-class Search extends Component<Props, State> {
-	state = {
-		searchTerm: ``
-	};
+const Search = (props: Props) => (
+	<div className="search">
+		<Header showSearch />
+		{/* Only need now showSearch because with Redux store can directly access searchTerm and handleSearchTermStateChange inside Header component */}
+		<div>
+			{props.shows
+				.filter(show =>
+					`${show.title} ${show.description}`.toUpperCase().includes(props.searchTerm.toUpperCase())
+				)
+				.map(show => (
+					<ShowCard key={show.imdbID} {...show /* anti pattern. Better to be explicit */} />
+				))}
+		</div>
+	</div>
+);
 
-	handleSearchTermStateChange = (evt: SyntheticKeyboardEvent<HTMLInputElement>) => {
-		this.setState({ searchTerm: evt.currentTarget.value });
-	};
+const mapStateToProps = state => ({ searchTerm: state.searchTerm });
 
-	render() {
-		return (
-			<div className="search">
-				<Header
-					showSearch
-					searchTerm={this.state.searchTerm}
-					handleSearchTermStateChange={this.handleSearchTermStateChange}
-				/>
-				<div>
-					{this.props.shows
-						.filter(show =>
-							`${show.title} ${show.description}`
-								.toUpperCase()
-								.includes(this.state.searchTerm.toUpperCase())
-						)
-						.map(show => (
-							<ShowCard key={show.imdbID} {...show /* anti pattern. Better to be explicit */} />
-						))}
-				</div>
-			</div>
-		);
-	}
-}
-
-export default Search;
+export default connect(mapStateToProps)(Search);

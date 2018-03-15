@@ -25,7 +25,7 @@ class Landing extends Component<Props, any> {
 					<input
 						value={this.props.searchTerm}
 						type="text"
-						onChange={this.props.handleSearchTermStateChange} // handleSearchTermStateChange will be injected from mapDispatchToProps (line 27)
+						onChange={this.props.handleSearchTermStateChange} // handleSearchTermStateChange will be injected from mapDispatchToProps
 						placeholder="Search"
 					/>
 				</form>

@@ -1,7 +1,7 @@
 import { SET_SEARCH_TERM } from './actions';
 
 const DEFAULT_STATE = {
-	searchTerm: `asd`
+	searchTerm: ``
 };
 
 const setSearchTermR = (state, action) => Object.assign({}, state, { searchTerm: action.payload }); // MUST RETURN NEW OBJECT, DONT MUTATE OLD ONE.  This reducer will return an object to rootReducer
