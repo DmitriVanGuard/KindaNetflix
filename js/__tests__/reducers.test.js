@@ -1,5 +1,5 @@
 // @flow
-/* eslint-disable quotes */
+/* eslint quotes:0 */
 
 import reducers from '../reducers';
 

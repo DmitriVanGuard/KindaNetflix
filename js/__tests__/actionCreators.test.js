@@ -1,5 +1,5 @@
 // @flow
-/* eslint-disable quotes */
+/* eslint quotes:0 */
 
 import moxios from 'moxios';
 import { setSearchTermAC, addAPIDataAC, getAPIDetailsTAC } from '../actionCreators';
