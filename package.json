@@ -18,12 +18,14 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server":
+      "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development"
+    "dev": "NODE_ENV=development webpack-dev-server --mode development",
+    "build": "NODE_ENV=production webpack --mode production"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -72,8 +74,6 @@
     "webpack-dev-server": "^3.1.1"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

@@ -1,7 +1,6 @@
 /* eslint no-console:0 */
 
 require(`babel-register`); // Everything in this file will not be transpiled, but everything that requires will run throw babel
-
 const express = require(`express`);
 const React = require(`react`);
 const ReactDOMServer = require(`react-dom/server`);
