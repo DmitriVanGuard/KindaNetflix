@@ -15,6 +15,7 @@ const Search = (props: Props) => (
 		<Header showSearch />
 		{/* Only need now showSearch because with Redux store can directly access searchTerm and handleSearchTermStateChange inside Header component */}
 		<div>
+			{console.log(props)}
 			{props.shows
 				.filter(show =>
 					`${show.title} ${show.description}`.toUpperCase().includes(props.searchTerm.toUpperCase())

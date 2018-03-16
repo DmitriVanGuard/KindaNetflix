@@ -18,8 +18,7 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server":
-      "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
@@ -29,12 +28,18 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-register": "^6.26.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "lodash": "^4.17.5",
+    "preact": "^8.2.7",
+    "preact-compat": "^3.18.0",
+    "preact-router": "^2.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-loadable": "^5.3.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
@@ -74,6 +79,8 @@
     "webpack-dev-server": "^3.1.1"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

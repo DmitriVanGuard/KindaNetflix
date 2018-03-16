@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
 	context: __dirname,
@@ -51,6 +52,17 @@ if (process.env.NODE_ENV === `production`) {
 	config.devtool = false;
 	delete config.devServer;
 	delete config.plugins;
+	config.plugins = [
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				compress: false,
+				mangle: false,
+				keep_fnames: true
+			},
+			sourceMap: true
+		})
+	];
+	// console.log(webpack.optimize.UglifyJsPlugin);
 }
 
 module.exports = config;
