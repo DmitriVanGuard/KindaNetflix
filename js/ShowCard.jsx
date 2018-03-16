@@ -31,7 +31,11 @@ class ShowCard extends Component<Props, any> {
 	}
 	render() {
 		return (
-			<Wrapper to={`/details/${this.props.imdbID}`} href={`/details/${this.props.imdbID}`}>
+			<Wrapper
+				className="show-card"
+				to={`/details/${this.props.imdbID}`}
+				href={`/details/${this.props.imdbID}`}
+			>
 				{/* Wrapper can also contain className */}
 				<Image
 					src={`/public/img/posters/${this.props.poster}`}
