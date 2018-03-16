@@ -1,11 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
+import type { ComponentType } from 'react';
 import Spinner from './Spinner';
 
 type Props = {
-	componentProps: mixed,
-	loadingPromise: Promise<{ default: Class<React.Component<*, *, *>> }> // in < > defining what Promise will return
+	props: mixed, // these props are props that we will pass to AsyncRoute.component
+	loadingPromise: Promise<{ default: ComponentType<*> }> // in < > defining what Promise will return
 	// default property will contain React component
 };
 type State = {
@@ -32,7 +33,7 @@ class AsyncRoute extends Component<Props, State> {
 		if (this.state.loaded) {
 			// this === AsyncRoute
 			// $FlowFixMe
-			return <this.component {...this.props.componentProps} />;
+			return <this.component {...this.props.props} />;
 		}
 		return <Spinner />;
 	}
