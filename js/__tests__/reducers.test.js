@@ -1,3 +1,6 @@
+// @flow
+/* eslint-disable quotes */
+
 import reducers from '../reducers';
 
 test(`SET_SEARCH_TERM`, () => {
