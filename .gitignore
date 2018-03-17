@@ -7,3 +7,4 @@ yarn*
 coverage/
 flow-typed/
 /public/*.hot-update.*
+*.chunk.js
