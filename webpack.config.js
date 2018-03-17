@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const RLP = require('react-loadable/webpack');
 
 const config = {
 	context: __dirname,
@@ -30,7 +31,19 @@ const config = {
 		reasons: true,
 		chunks: true
 	},
-	plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
+		new RLP.ReactLoadablePlugin({
+			filename: './react-loadable.json'
+		})
+	],
+	optimization: {
+		splitChunks: {
+			name: 'manifest',
+			minChunks: Infinity
+		}
+	},
 	module: {
 		rules: [
 			{

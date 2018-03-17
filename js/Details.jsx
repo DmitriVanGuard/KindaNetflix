@@ -14,7 +14,7 @@ type Props = {
 
 class Details extends Component<Props, Object> {
 	componentDidMount() {
-		if (!this.props.rating || this.props.rating === `no rating`) this.props.getAPIData();
+		if (!this.props.rating) this.props.getAPIData();
 	}
 
 	render() {
@@ -51,7 +51,7 @@ class Details extends Component<Props, Object> {
 const mapStateToProps = (state, ownProps) => {
 	const apiData = state.apiData[ownProps.show.imdbID] ? state.apiData[ownProps.show.imdbID] : {};
 	return {
-		rating: apiData.rating || `no rating`
+		rating: apiData.rating
 	};
 };
 

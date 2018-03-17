@@ -12,6 +12,8 @@
 	"plugins": [
 		"react-hot-loader/babel",
 		"babel-plugin-syntax-dynamic-import",
+		"react-loadable/babel",
+		"babel-plugin-dynamic-import-webpack",
 		"babel-plugin-transform-class-properties"
 	],
 	"env": { // doing different transformations based on environmental vars
