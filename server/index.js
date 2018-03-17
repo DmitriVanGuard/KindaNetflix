@@ -1,1 +1,3 @@
-require(`babel-register`);
+import a from './test';
+
+a();
