@@ -25,10 +25,11 @@
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
     "dev": "NODE_ENV=development webpack-dev-server --mode development",
-    "clean:server": "rm -rf server/dist",
-    "build:server":
-      "npm run clean:server && mkdir server/dist && NODE_ENV=server yarn babel server/ --out-dir server/dist",
-    "production": "npm run build:server && node server/bin/production"
+    "serve:dev": "NODE_ENV=server node server/_dev",
+    "serve:clean": "rm -f server/server.js",
+    "serve:build":
+      "yarn serve:clean && NODE_ENV=server yarn babel server/index.js --out-file server/server.js",
+    "serve:prod": "yarn serve:build && node server/_production"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -50,6 +51,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
