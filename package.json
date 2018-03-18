@@ -18,8 +18,7 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server":
-      "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
@@ -28,8 +27,7 @@
     "build": "NODE_ENV=production webpack -p",
     "serve:dev": "NODE_ENV=server nodemon server/_dev",
     "serve:clean": "rm -f server/server.js",
-    "serve:build":
-      "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.prod.config.js\" -p",
+    "serve:build": "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.prod.config.js\" -p",
     "serve:prod": "yarn serve:build && node server/server"
   },
   "dependencies": {
@@ -38,6 +36,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "lodash": "^4.17.5",
+    "preact": "^8.2.7",
+    "preact-compat": "^3.18.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -79,12 +79,15 @@
     "moxios": "^0.4.0",
     "nodemon": "^1.17.2",
     "react-hot-loader": "^4.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1",
     "webpack-node-externals": "^1.6.0"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

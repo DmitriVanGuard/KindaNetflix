@@ -1,4 +1,5 @@
 /* eslint-disable */
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = ({ webpack, path, __dirname }) => ({
 	context: __dirname,
@@ -13,7 +14,11 @@ module.exports = ({ webpack, path, __dirname }) => ({
 		publicPath: '/public/'
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.json']
+		extensions: ['.js', '.jsx', '.json'],
+		alias: {
+			react: 'preact-compat',
+			'react-dom': 'preact-compat'
+		}
 	},
 	stats: {
 		colors: true,
@@ -26,7 +31,16 @@ module.exports = ({ webpack, path, __dirname }) => ({
 		// filename: 'vendor_[hash].js',
 		// minChunks: 2
 		// }
-		// minimize: {
+		minimizer: [
+			new UglifyJsPlugin({
+				uglifyOptions: {
+					compress: {
+						reduce_vars: false // Must be false in order to enable PREACT
+					}
+				}
+			})
+		]
+		// {
 		// 	compress: {
 		// 		unused: true,
 		// 		dead_code: true,
@@ -46,7 +60,8 @@ module.exports = ({ webpack, path, __dirname }) => ({
 			},
 			{
 				test: /\.jsx?$/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
+				include: [path.resolve('js'), path.resolve('node-modules/preact-compat/src')]
 			}
 		]
 	}
