@@ -5,14 +5,21 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
+import routes from './rrv4/routes';
+import { ensureReady, convertCustomRouteConfig } from './rrv4/rrv4Helpers';
+
+const routeConfig = convertCustomRouteConfig(routes);
+
 const renderApp = () => {
-	render(
-		<BrowserRouter>
-			{/* Moved BrowserRouter to here, because for SSR node doest not understand BrowserRouter => BrowserRouter should be only on client */}
-			<App />
-		</BrowserRouter>,
-		// $FlowFixMe
-		document.getElementById(`app`)
+	ensureReady(routeConfig).then(() =>
+		render(
+			<BrowserRouter>
+				{/* Moved BrowserRouter to here, because for SSR node doest not understand BrowserRouter => BrowserRouter should be only on client */}
+				<App />
+			</BrowserRouter>,
+			// $FlowFixMe
+			document.getElementById(`app`)
+		)
 	);
 };
 
