@@ -18,18 +18,16 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server":
-      "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
     "dev": "NODE_ENV=development webpack-dev-server --mode development",
-    "serve:dev": "NODE_ENV=server node server/_dev",
+    "serve:dev": "NODE_ENV=server nodemon server/_dev",
     "serve:clean": "rm -f server/server.js",
-    "serve:build":
-      "yarn serve:clean && NODE_ENV=server yarn babel server/index.js --out-file server/server.js",
-    "serve:prod": "yarn serve:build && node server/_production"
+    "serve:build": "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.production.config.js\" -p",
+    "serve:prod": "yarn serve:build && node server/server"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -80,9 +78,12 @@
     "react-hot-loader": "^4.0.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

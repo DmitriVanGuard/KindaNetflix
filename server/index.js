@@ -6,7 +6,7 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom'; // StaticRouter is going to be what we replaced BrowserRouter with in node
 import _ from 'lodash';
 import fs from 'fs';
-import App from '../js/App.jsx';
+import App from '../js/App';
 
 const port = 8080;
 const baseTemplate = fs.readFileSync(`./index.html`);
