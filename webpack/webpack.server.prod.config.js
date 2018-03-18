@@ -2,7 +2,8 @@
 
 const path = require('path');
 const webpack = require('webpack');
-var nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	context: __dirname,
@@ -13,12 +14,27 @@ module.exports = {
 	},
 	target: 'node',
 	resolve: {
-		extensions: ['.js', '.jsx', '.json']
+		extensions: ['.js', '.jsx', '.json'],
+		alias: {
+			react: 'preact-compat',
+			'react-dom': 'preact-compat'
+		}
 	},
 	externals: [nodeExternals()],
 	stats: {
 		colors: true,
 		reasons: true
+	},
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				uglifyOptions: {
+					compress: {
+						reduce_vars: false // Must be false in order to enable PREACT
+					}
+				}
+			})
+		]
 	},
 	plugins: [
 		new webpack.optimize.LimitChunkCountPlugin({
@@ -29,7 +45,8 @@ module.exports = {
 		rules: [
 			{
 				test: /\.jsx?$/,
-				loader: 'babel-loader'
+				loader: 'babel-loader',
+				include: [path.resolve('js'), path.resolve('node-modules/preact-compat/src')]
 			}
 		]
 	}
