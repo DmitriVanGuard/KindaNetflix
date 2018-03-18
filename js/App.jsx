@@ -6,7 +6,8 @@ import type { Match } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import AsyncRoute from './AsyncRoute';
+// import AsyncRoute from './AsyncRoute';
+import { Landing, Search, Details } from './loadableRoutes';
 import preload from '../data.json';
 
 const FourOhFour = () => <h1>404</h1>;
@@ -15,32 +16,12 @@ const App = () => (
 	<Provider store={store}>
 		<div className="app">
 			<Switch>
-				<Route
-					exact
-					path="/"
-					component={props => (
-						<AsyncRoute
-							props={props}
-							loadingPromise={import(/* webpackChunkName: 'Landing' */ `./Landing`)}
-						/>
-					)}
-				/>
-				<Route
-					path="/search"
-					component={props => (
-						<AsyncRoute
-							props={Object.assign({ shows: preload.shows }, props)}
-							loadingPromise={import(/* webpackChunkName: 'Search' */ `./Search`)}
-						/>
-					)}
-				/>
+				<Route exact path="/" render={() => <Landing />} />
+				<Route path="/search" render={() => <Search shows={preload.shows} />} />
 				<Route
 					path="/details/:id"
-					component={(props: { match: Match }) => (
-						<AsyncRoute
-							props={{ show: preload.shows.find(show => show.imdbID === props.match.params.id) }}
-							loadingPromise={import(/* webpackChunkName: "Details" */ `./Details`)}
-						/>
+					render={(props: { match: Match }) => (
+						<Details show={preload.shows.find(show => show.imdbID === props.match.params.id)} />
 					)}
 				/>
 				<Route component={FourOhFour} />
