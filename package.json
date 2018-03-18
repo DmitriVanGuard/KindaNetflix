@@ -18,12 +18,17 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server":
+      "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development"
+    "dev": "NODE_ENV=development webpack-dev-server --mode development",
+    "clean:server": "rm -rf server/dist",
+    "build:server":
+      "npm run clean:server && mkdir server/dist && NODE_ENV=server yarn babel server/ --out-dir server/dist",
+    "production": "npm run build:server && node server/bin/production"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -41,6 +46,7 @@
     "styled-components": "^3.2.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
@@ -75,8 +81,6 @@
     "webpack-dev-server": "^3.1.1"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
