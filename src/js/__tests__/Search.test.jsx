@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from '../store';
 import { setSearchTermAC } from '../actionCreators';
-import preload from '../../data.json';
+import preload from '../../../data.json';
 import Search, { Unwrapped as UnwrappedSearch } from '../Search';
 import ShowCard from '../ShowCard';
 
