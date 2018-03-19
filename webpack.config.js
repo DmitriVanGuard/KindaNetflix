@@ -13,9 +13,11 @@ switch (process.env.NODE_ENV) {
 		config = require('./webpack/webpack.client.prod.config')({ webpack, path, __dirname });
 		break;
 	case 'server':
+		config = require('./webpack/webpack.client.dev.config')({ webpack, path, __dirname });
 		break;
 	default:
 		console.log('wtf????');
+		config = require('./webpack/webpack.client.dev.config')({ webpack, path, __dirname });
 		break;
 }
 

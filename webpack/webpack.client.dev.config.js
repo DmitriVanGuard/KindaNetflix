@@ -1,4 +1,5 @@
 /* eslint-disable */
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 module.exports = ({ webpack, path, __dirname }) => ({
 	context: __dirname,
@@ -29,7 +30,14 @@ module.exports = ({ webpack, path, __dirname }) => ({
 		reasons: true,
 		chunks: true
 	},
-	plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+	optimization: {},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
+		new ReactLoadablePlugin({
+			filename: './public/react-loadable.json'
+		})
+	],
 	module: {
 		rules: [
 			{

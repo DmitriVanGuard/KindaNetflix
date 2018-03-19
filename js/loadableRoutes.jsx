@@ -8,12 +8,7 @@ export const Landing = Loadable({
 		return <Spinner />;
 	}
 });
-export const Search = Loadable({
-	loader: () => import(/* webpackChunkName: 'Search' */ `./Search`),
-	loading() {
-		return <Spinner />;
-	}
-});
+
 export const Details = Loadable({
 	loader: () => import(/* webpackChunkName: 'Details' */ `./Details`),
 	loading() {
@@ -21,3 +16,9 @@ export const Details = Loadable({
 	}
 });
 
+export const Search = Loadable({
+	loader: () => import(/* webpackChunkName: 'Search' */ `./Search`),
+	loading() {
+		return <Spinner />;
+	}
+});

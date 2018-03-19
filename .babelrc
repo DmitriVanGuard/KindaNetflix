@@ -17,7 +17,8 @@
 			"asyncGenerators": false,
 			  "generators": false,
 		  "async": true
-	  }]
+	  }],
+		"react-loadable/babel"
 	],
 	"env": { // doing different transformations based on environmental vars
 		"development": {

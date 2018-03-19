@@ -1,0 +1,26 @@
+function buildManifest(compiler, compilation) {
+  var context = compiler.options.context;
+  var manifest = {};
+  var myManifest = {};
+
+  compilation.chunks.forEach(function(chunk) {
+    chunk._groups.forEach(function(group) {
+      const chunkRequestOrigin = group.origins[0].request ? group.origins[0].request : chunk.name;
+      if (!myManifest[chunkRequestOrigin]) {
+        myManifest[chunkRequestOrigin] = [];
+      }
+      if (chunk.files.length > 1) {
+        console.log('****************************************');
+        console.log('CHUNK FILES CONTAIN MORE THAN 1 FILE!!!!');
+        console.log('****************************************');
+      }
+      myManifest[chunkRequestOrigin].push({
+        id: chunk.id,
+        name: chunk.name,
+        file: chunk.files[0]
+      });
+    });
+  });
+
+  return myManifest;
+}

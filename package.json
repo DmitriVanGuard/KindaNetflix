@@ -18,7 +18,7 @@
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "watch": "webpack --mode development --watch",
-    "watch:server": "NODE_ENV=server webpack --mode development --watch --config webpack-server.config.js",
+    "watch:server": "NODE_ENV=server webpack --mode development --watch",
     "serve": "NODE_ENV=server nodemon server.js",
     "test": "jest",
     "test:update": "jest -u",
@@ -27,7 +27,8 @@
     "build": "NODE_ENV=production webpack -p",
     "serve:dev": "NODE_ENV=server nodemon server/_dev",
     "serve:clean": "rm -f server/server.js",
-    "serve:build": "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.prod.config.js\" -p",
+    "serve:build":
+      "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.prod.config.js\" -p",
     "serve:prod": "yarn serve:build && node server/server"
   },
   "dependencies": {
@@ -61,6 +62,7 @@
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
@@ -87,8 +89,6 @@
     "webpack-node-externals": "^1.6.0"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

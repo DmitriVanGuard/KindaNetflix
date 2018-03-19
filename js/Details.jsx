@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAPIDetailsTAC } from './actionCreators';
+import getAPIDetailsTAC from './asyncActionCreators';
 import Header from './Header';
 import Spinner from './Spinner';
 

@@ -1,16 +1,15 @@
 /* eslint-disable */
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = ({ webpack, path, __dirname }) => ({
 	context: __dirname,
-	entry: {
-		// vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux'],
-		app: ['regenerator-runtime/runtime.js', './js/ClientApp.jsx']
-	},
+	entry: ['regenerator-runtime/runtime.js', './js/ClientApp.jsx'],
 	output: {
 		path: path.join(__dirname, 'public'),
 		filename: 'bundle.js',
-		chunkFilename: '[id]-[hash].chunk.js',
+		chunkFilename: '[id]-[chunkhash].chunk.js',
 		publicPath: '/public/'
 	},
 	resolve: {
@@ -25,31 +24,16 @@ module.exports = ({ webpack, path, __dirname }) => ({
 		reasons: true,
 		chunks: true
 	},
-	optimization: {
-		// splitChunks: {
-		// name: 'vendor',
-		// filename: 'vendor_[hash].js',
-		// minChunks: 2
-		// }
-		minimizer: [
-			new UglifyJsPlugin({
-				uglifyOptions: {
-					compress: {
-						reduce_vars: false // Must be false in order to enable PREACT
-					}
-				}
-			})
-		]
-		// {
-		// 	compress: {
-		// 		unused: true,
-		// 		dead_code: true,
-		// 		warnings: false,
-		// 		screw_ie8: true
-		// 	}
-		// }
-	},
-	plugins: [],
+
+	plugins: [
+		new CleanWebpackPlugin(['public/*.js', 'public/*.json'], {
+			root: __dirname,
+			verbose: true
+		}),
+		new ReactLoadablePlugin({
+			filename: './public/react-loadable.json'
+		})
+	],
 	module: {
 		rules: [
 			{
@@ -63,6 +47,17 @@ module.exports = ({ webpack, path, __dirname }) => ({
 				loader: 'babel-loader',
 				include: [path.resolve('js'), path.resolve('node-modules/preact-compat/src')]
 			}
+		]
+	},
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				uglifyOptions: {
+					compress: {
+						reduce_vars: false // Must be false in order to enable PREACT
+					}
+				}
+			})
 		]
 	}
 });
