@@ -18,6 +18,12 @@ const template = _.template(baseTemplate);
 
 const server = express();
 
+server.get(`*.js`, (req, res, next) => {
+	req.url = `${req.url}.gz`;
+	res.set(`Content-Encoding`, `gzip`);
+	next();
+});
+
 server.use(`/public`, express.static(`./public`));
 
 server.use((req, res) => {

@@ -9,3 +9,4 @@ flow-typed/
 /public/*.hot-update.*
 *.chunk.js
 server/server.js
+*.js.*

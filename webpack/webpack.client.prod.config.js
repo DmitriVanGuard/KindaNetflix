@@ -2,6 +2,7 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = ({ webpack, path, __dirname }) => ({
 	context: __dirname,
@@ -32,6 +33,11 @@ module.exports = ({ webpack, path, __dirname }) => ({
 		}),
 		new ReactLoadablePlugin({
 			filename: './public/react-loadable.json'
+		}),
+		new CompressionPlugin({
+			asset: '[path].gz[query]',
+			algorithm: 'gzip',
+			test: /\.js$|\.html$/
 		})
 	],
 	module: {
