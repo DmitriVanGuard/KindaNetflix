@@ -58,5 +58,4 @@ server.use((req, res) => {
 	res.end();
 });
 
-console.log(`listening on ${port}`);
-server.listen(port);
+Loadable.preloadAll().then(() => server.listen(port, () => console.log(`listening on ${port}`)));
