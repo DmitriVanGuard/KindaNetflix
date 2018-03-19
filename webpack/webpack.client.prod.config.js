@@ -1,14 +1,19 @@
 /* eslint-disable */
+
+const path = require('path');
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-module.exports = ({ webpack, path, __dirname }) => ({
-	context: __dirname,
-	entry: ['regenerator-runtime/runtime.js', './js/ClientApp.jsx'],
+const projectRoot = path.resolve(__dirname, '../');
+
+module.exports = {
+	context: projectRoot,
+	entry: ['regenerator-runtime/runtime.js', './src/js/ClientApp.jsx'],
 	output: {
-		path: path.join(__dirname, 'public'),
+		path: path.join(projectRoot, 'public'),
 		filename: 'bundle.js',
 		chunkFilename: '[id]-[chunkhash].chunk.js',
 		publicPath: '/public/'
@@ -27,8 +32,8 @@ module.exports = ({ webpack, path, __dirname }) => ({
 	},
 
 	plugins: [
-		new CleanWebpackPlugin(['public/*.js', 'public/*.json'], {
-			root: __dirname,
+		new CleanWebpackPlugin(['public/*.js', 'public/*.js.gz', 'public/*.json'], {
+			root: projectRoot,
 			verbose: true
 		}),
 		new ReactLoadablePlugin({
@@ -51,7 +56,7 @@ module.exports = ({ webpack, path, __dirname }) => ({
 			{
 				test: /\.jsx?$/,
 				loader: 'babel-loader',
-				include: [path.resolve('js'), path.resolve('node-modules/preact-compat/src')]
+				include: [path.resolve('src/js'), path.resolve('node-modules/preact-compat/src')]
 			}
 		]
 	},
@@ -66,4 +71,4 @@ module.exports = ({ webpack, path, __dirname }) => ({
 			})
 		]
 	}
-});
+};

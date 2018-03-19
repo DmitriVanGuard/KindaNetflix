@@ -1,18 +1,22 @@
 /* eslint-disable */
+const path = require('path');
+const webpack = require('webpack');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
-module.exports = ({ webpack, path, __dirname }) => ({
-	context: __dirname,
+const projectRoot = path.resolve(__dirname, '../');
+
+module.exports = {
+	context: projectRoot,
 	entry: [
 		'react-hot-loader/patch',
 		'webpack-dev-server/client?http://localhost:8080',
 		'webpack/hot/only-dev-server',
 		'regenerator-runtime/runtime.js',
-		'./js/ClientApp.jsx'
+		'./src/js/ClientApp.jsx'
 	],
 	devtool: 'cheap-eval-source-map',
 	output: {
-		path: path.join(__dirname, 'public'),
+		path: path.join(projectRoot, 'public'),
 		filename: 'bundle.js',
 		chunkFilename: '[name].chunk.js',
 		publicPath: '/public/'
@@ -52,4 +56,4 @@ module.exports = ({ webpack, path, __dirname }) => ({
 			}
 		]
 	}
-});
+};

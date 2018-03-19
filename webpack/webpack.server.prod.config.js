@@ -5,20 +5,18 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const projectRoot = path.resolve(__dirname, '../');
+
 module.exports = {
-	context: __dirname,
-	entry: '../server/index.js',
+	context: projectRoot,
+	entry: './src/server/index.js',
 	output: {
-		path: path.join(__dirname, '../server'),
+		path: path.join(projectRoot, 'public'),
 		filename: 'server.js'
 	},
 	target: 'node',
 	resolve: {
-		extensions: ['.js', '.jsx', '.json'],
-		alias: {
-			react: 'preact-compat',
-			'react-dom': 'preact-compat'
-		}
+		extensions: ['.js', '.jsx', '.json']
 	},
 	externals: [nodeExternals()],
 	stats: {
@@ -45,8 +43,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.jsx?$/,
-				loader: 'babel-loader',
-				include: [path.resolve('js'), path.resolve('node-modules/preact-compat/src')]
+				loader: 'babel-loader'
 			}
 		]
 	}

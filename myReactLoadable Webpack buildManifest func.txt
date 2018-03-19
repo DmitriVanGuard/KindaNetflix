@@ -1,6 +1,5 @@
 function buildManifest(compiler, compilation) {
   var context = compiler.options.context;
-  var manifest = {};
   var myManifest = {};
 
   compilation.chunks.forEach(function(chunk) {

@@ -8,7 +8,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
-import stats from '../public/react-loadable.json';
+import stats from '../../public/react-loadable.json';
 
 import App from '../js/App';
 

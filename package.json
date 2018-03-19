@@ -23,12 +23,14 @@
     "test": "jest",
     "test:update": "jest -u",
     "test:coverage": "jest --coverage",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development",
-    "build": "NODE_ENV=production webpack -p",
-    "serve:dev": "NODE_ENV=server nodemon server/_dev",
+    "dev":
+      "NODE_ENV=development webpack-dev-server --mode development --config \"webpack/webpack.client.dev.config.js\"",
+    "build": "NODE_ENV=production webpack -p --config \"webpack/webpack.client.prod.config.js\"",
+    "serve:dev": "NODE_ENV=server nodemon src/server/_dev",
     "serve:clean": "rm -f server/server.js",
-    "serve:build": "yarn serve:clean && NODE_ENV=production yarn webpack --config \"webpack/webpack.server.prod.config.js\" -p",
-    "serve:prod": "yarn serve:build && node server/server"
+    "serve:build":
+      "yarn serve:clean && NODE_ENV=production yarn webpack -p --config \"webpack/webpack.server.prod.config.js\"",
+    "serve:prod": "yarn serve:build && node public/server"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -89,8 +91,6 @@
     "webpack-node-externals": "^1.6.0"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

@@ -6,9 +6,8 @@ import type { Match } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
-// import AsyncRoute from './AsyncRoute';
 import { Landing, Search, Details } from './loadableRoutes';
-import preload from '../data.json';
+import preload from '../../data.json';
 
 const FourOhFour = () => <h1>404</h1>;
 
