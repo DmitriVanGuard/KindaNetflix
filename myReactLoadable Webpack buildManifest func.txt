@@ -3,7 +3,7 @@ function buildManifest(compiler, compilation) {
   var myManifest = {};
 
   compilation.chunks.forEach(function(chunk) {
-    chunk._groups.forEach(function(group) {
+    chunk.groupsIterable.forEach(function(group) {
       const chunkRequestOrigin = group.isInitial()
         ? 'entryPoint-' + chunk.name
         : group.origins[0].request;
