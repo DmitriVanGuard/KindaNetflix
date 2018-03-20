@@ -4,7 +4,9 @@ function buildManifest(compiler, compilation) {
 
   compilation.chunks.forEach(function(chunk) {
     chunk._groups.forEach(function(group) {
-      const chunkRequestOrigin = group.origins[0].request ? group.origins[0].request : chunk.name;
+      const chunkRequestOrigin = group.isInitial()
+        ? 'entryPoint-' + chunk.name
+        : group.origins[0].request;
       if (!myManifest[chunkRequestOrigin]) {
         myManifest[chunkRequestOrigin] = [];
       }
